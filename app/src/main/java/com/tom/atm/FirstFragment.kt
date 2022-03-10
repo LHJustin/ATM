@@ -1,5 +1,6 @@
 package com.tom.atm
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -30,13 +31,36 @@ class FirstFragment : Fragment() {
 
     }
 
+    var remember = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val pref = requireContext().getSharedPreferences("atm", Context.MODE_PRIVATE)
+        val checked = pref.getBoolean("rem_username", false)
+        binding.cbRemember.isChecked = checked
+        binding.cbRemember.setOnCheckedChangeListener {compoundButton, checked ->
+            remember = checked
+            pref.edit().putBoolean("rem_username", remember).apply()
+            if (!checked){
+                pref.edit().putString("USER", "").apply()
+            }
+        }
+        val prefUser = pref.getString("USER", "")
+        if (prefUser != "") {
+            binding.edUsername.setText(prefUser)
+        }
 
         binding.buttonFirst.setOnClickListener {
             //Login stuff
-            if (binding.edUsername.text.toString() == "jack" &&
-                    binding.edPassword.text.toString() == "1234") {
+            val username = binding.edUsername.text.toString()
+            val password = binding.edPassword.text.toString()
+            if (username == "jack" && password == "1234") {
+//                save username to preferences
+//                val pref = requireContext().getSharedPreferences("atm", Context.MODE_PRIVATE)
+                if (remember)
+                    pref.edit()
+                    .putString("USER", username)
+                    .putInt("LEVEL", 3)
+                    .apply() //.commit()
                 findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
             }else {
                 //error
