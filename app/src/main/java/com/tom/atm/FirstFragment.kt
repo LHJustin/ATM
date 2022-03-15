@@ -31,10 +31,12 @@ class FirstFragment : Fragment() {
 
     }
 
-    var remember = false
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        //username的存放
         val pref = requireContext().getSharedPreferences("atm", Context.MODE_PRIVATE)
+        //checkbox判斷勾選與否要做的事
+        var remember = false
         val checked = pref.getBoolean("rem_username", false)
         binding.cbRemember.isChecked = checked
         binding.cbRemember.setOnCheckedChangeListener {compoundButton, checked ->
@@ -54,7 +56,7 @@ class FirstFragment : Fragment() {
             val username = binding.edUsername.text.toString()
             val password = binding.edPassword.text.toString()
             if (username == "jack" && password == "1234") {
-//                save username to preferences
+                //save username to preferences
 //                val pref = requireContext().getSharedPreferences("atm", Context.MODE_PRIVATE)
                 if (remember)
                     pref.edit()
