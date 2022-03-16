@@ -3,11 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.2557291666666667" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/content_main.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/fragment_first.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/fragment_second.xml" value="0.22" />
-        <entry key="app/src/main/res/layout/row_chatroom.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/row_chatroom.xml" value="0.22" />
         <entry key="app/src/main/res/layout/row_classroom.xml" value="0.22" />
         <entry key="app/src/main/res/menu/menu_main.xml" value="0.22916666666666666" />
         <entry key="lib/src/main/res/layout/activity_my_class.xml" value="0.22916666666666666" />
